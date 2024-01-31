@@ -145,7 +145,8 @@ def main(args):
     config_path = os.path.join(ckpt_dir, 'config.pkl')
     expr_name = ckpt_dir.split('/')[-1]
     if not is_eval:
-        wandb.init(project="mobile-aloha2", reinit=True, entity="mobile-aloha2", name=expr_name)
+        #wandb.init(project="mobile-aloha2", reinit=True, entity="mobile-aloha2", name=expr_name)
+        wandb.init(project="eshim-aloha", reinit=True, name=expr_name)
         wandb.config.update(config)
     with open(config_path, 'wb') as f:
         pickle.dump(config, f)
@@ -471,7 +472,7 @@ def eval_bc(config, ckpt_name, save_episode=True, num_rollouts=50):
                 # time.sleep(max(0, DT - duration - culmulated_delay))
                 if duration >= DT:
                     culmulated_delay += (duration - DT)
-                    # print(f'Warning: step duration: {duration:.3f} s at step {t} longer than DT: {DT} s, culmulated delay: {culmulated_delay:.3f} s')
+                    # print(f'Warning: step duration: {duration:.3f} s at step {t} longer than DT: {DT} s, culmulated delay: {culmulated_delay:.3f} s')  #commnted out by eshim
                 # else:
                 #     culmulated_delay = max(0, culmulated_delay - (DT - duration))
 
